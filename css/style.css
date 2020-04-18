@@ -1,0 +1,74 @@
+body {
+  background-color: darkslateblue;
+}
+
+.formulario {
+  background-color: rgb(243, 243, 243);
+  border-radius: 5px;
+  margin-top: 40px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+label {
+  display: block;
+  margin-left: 10%;
+  font-size: 15px;
+}
+
+input,
+select {
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+  height: 10%;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-style: solid;
+  border-color: #ccc;
+  border-radius: 5px;
+  font-size: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+}
+
+input:focus {
+  background-color: rgb(238, 238, 238);
+  border-style: solid;
+  border-color: blueviolet;
+  border-radius: 5px;
+}
+
+.title {
+  text-align: center;
+  color: white;
+  font-family: sans-serif;
+  /*opacity: 98%;*/
+}
+
+.btn-send {
+  width: 100px;
+  height: 30px;
+  margin-left: 10%;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: none;
+  background-color: darkslateblue;
+  color: white;
+}
+
+.btn-send:hover {
+  background-color: rgb(69, 25, 110);
+  width: 102px;
+  height: 32px;
+}
+
+.btn-send:active {
+  background-color: rgb(69, 25, 110);
+  width: 100px;
+  height: 30px;
+}

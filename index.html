@@ -5,16 +5,64 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/style.css">
+
     </head>
 
     <body>
-        <h1>AJAX</h1>
-        <button id="boton">enviar datos usuario</button>
-        <ul id="lista-usuarios">
+        <h1 class="title">Formulario de prueba FECH y AJAX</h1>
+        <div class="formulario">
 
-        </ul>
+            <form action="">
 
-        <script src="js/fech.js"></script>
+                <div class="form-group">
+                    <label class="span-input">
+                        Nombre
+                    </label>
+                    <input type="text" class="form-control" placeholder="nombre" id="nombre">
+                </div>
+
+                <div class="form-group">
+                    <label class="span-input">
+                        Apellido
+                    </label>
+                    <input type="text" class="form-control" placeholder="apellido" id="apellido">
+                </div>
+
+                <div class="form-group">
+                    <label class="span-input">
+                        Pais
+                    </label>
+                    <select name="select-country" id="select-country">
+                        <option selected value="colombia">colombia</option>
+                        <option value="panama">panama</option>
+                        <option value="mexico">mexico</option>
+                    </select>
+                </div>
+
+                <button type="button" class="btn-send">Enviar</button>
+
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <td>Nombre</td>
+                        <td>Apellido</td>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    <tr>
+                        <td>columna 1</td>
+                        <td>columna 2</td>
+                    </tr>
+                </tbody>
+            </table>
+            <script src="js/fech.js"></script>
+
+        </div>
     </body>
 
 </html>
