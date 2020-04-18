@@ -61,8 +61,25 @@ input:focus {
   color: white;
 }
 
+.btn-delete {
+  width: 100px;
+  height: 30px;
+  margin-left: 10%;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: none;
+  background-color: red;
+  color: white;
+}
+
 .btn-send:hover {
   background-color: rgb(69, 25, 110);
+  width: 102px;
+  height: 32px;
+}
+
+.btn-delete:hover {
+  background-color: rgb(252, 19, 19);
   width: 102px;
   height: 32px;
 }

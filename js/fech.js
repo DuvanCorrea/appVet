@@ -1,38 +1,80 @@
-const listaUsuarios = document.getElementById("lista-usuarios");
-const boton = document.getElementById("boton");
+let userList = document.getElementById("tbody");
+let button = document.getElementById("btn-send");
+let us;
+let btnsEliminar = null;
 
-function reqListener() {
-  const usuarios = JSON.parse(this.responseText);
-  console.log(usuarios);
-  const usuariosRender = usuarios
-    .map((usuario) => `<li>${usuario.nombre}</li>`)
+function traerUsuarios() {
+  //console.log(us);
+  let usuarios = us;
+  let usuariosRender = usuarios
+    .map((user, indice) => {
+      return `<tr>
+        <td>${user.nombre}</td>
+        <td>${user.apellido}</td>
+        <td>${user.pais}</td>
+        <td><button class="btn-delete" data-indice="${indice}">Eliminar</button></td>
+    </tr>`;
+    })
     .join("");
-  console.log(usuariosRender);
-  listaUsuarios.innerHTML = usuariosRender;
+  //console.log(usuariosRender);
+
+  userList.innerHTML = usuariosRender;
+
+  btnsEliminar = document.getElementsByClassName("btn-delete");
+
+  Array.from(btnsEliminar).forEach((btn) => {
+    btn.onclick = eliminarDatos;
+  });
+
+  //console.log(btnsEliminar);
 }
 
 function enviarDatos() {
-  const data = { name: "monady 24" };
-  // peticion post con fech
+  let nombre = document.getElementById("nombre").value;
+  let apellido = document.getElementById("apellido").value;
+  let pais = document.getElementById("select-country").value;
 
-  fetch("https://bootcamp-dia-3.camilomontoyau.now.sh/usuarios", {
+  let data = { nombre: nombre, apellido: apellido, pais: pais };
+
+  fetch(`https://bootcamp-dia-3.camilomontoyau.now.sh/usuarios`, {
     method: "POST",
     headers: {
-      "Content-Type": "aplication/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
   })
-    .then((response) => response.json())
-    .then((resJson) => console.log(resJson));
+    .then((res) => res.json())
+    .then((resJson) => {
+      console.log("res pos", resJson);
+      refrescar();
+    });
+}
 
-  // fin peticion fech
+function eliminarDatos(e) {
+  //console.log("eliminando...");
 
-  //setTimeout(refrescar, 3000);
+  fetch(
+    `https://bootcamp-dia-3.camilomontoyau.now.sh/usuarios/${e.target.dataset.indice}`,
+    {
+      method: "DELETE",
+    }
+  )
+    .then((res) => res.json())
+    .then((res2) => {
+      refrescar();
+    });
 }
 
 function refrescar() {
-  peticion.open("GET", "https://bootcamp-dia-3.camilomontoyau.now.sh/usuarios");
-  peticion.send();
+  fetch("https://bootcamp-dia-3.camilomontoyau.now.sh/usuarios")
+    .then((respuesta) => respuesta.json())
+    .then((resUsuarios) => {
+      //console.log("resss", resUsuarios);
+      us = resUsuarios;
+      traerUsuarios();
+    });
 }
 
-boton.addEventListener("click", enviarDatos);
+refrescar();
+
+button.onclick = enviarDatos;
