@@ -11,21 +11,23 @@ function reqListener() {
   listaUsuarios.innerHTML = usuariosRender;
 }
 
-var peticion = new XMLHttpRequest();
-peticion.addEventListener("load", reqListener);
-
 function enviarDatos() {
-  peticion.open(
-    "POST",
-    "https://bootcamp-dia-3.camilomontoyau.now.sh/usuarios",
-    true
-  );
-  peticion.setRequestHeader(
-    "Content-type",
-    "application/x-www-form-urlencoded"
-  );
-  peticion.send("nombre=LUNES24");
-  setTimeout(refrescar, 3000);
+  const data = { name: "monady 24" };
+  // peticion post con fech
+
+  fetch("https://bootcamp-dia-3.camilomontoyau.now.sh/usuarios", {
+    method: "POST",
+    headers: {
+      "Content-Type": "aplication/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((resJson) => console.log(resJson));
+
+  // fin peticion fech
+
+  //setTimeout(refrescar, 3000);
 }
 
 function refrescar() {
