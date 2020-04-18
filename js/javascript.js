@@ -1,30 +1,36 @@
-const Mipromesa = (indice) => {
-  new Promise((resolve, reject) => {
-    let timeResolve = Math.floor(Math.random() * 5000) + 1000;
-    let timeReject = Math.floor(Math.random() * 5000) + 1000;
+const listaUsuarios = document.getElementById("lista-usuarios");
+const boton = document.getElementById("boton");
 
-    setTimeout(() => {
-      console.log(`La promesa ${indice} exitosa`);
-    }, timeResolve);
-
-    setTimeout(() => {
-      console.log(`La ${indice} fallo`);
-    }, timeReject);
-  });
-};
-
-let misPromesas = [];
-for (let i = 0; i < 5; i++) {
-  misPromesas = [...misPromesas, Mipromesa(i)];
+function reqListener() {
+  const usuarios = JSON.parse(this.responseText);
+  console.log(usuarios);
+  const usuariosRender = usuarios
+    .map((usuario) => `<li>${usuario.nombre}</li>`)
+    .join("");
+  console.log(usuariosRender);
+  listaUsuarios.innerHTML = usuariosRender;
 }
 
-misPromesas.forEach((prom) =>
-  prom.then((res) => console.log(res)).catch((res) => console.log(res))
-);
+var peticion = new XMLHttpRequest();
+peticion.addEventListener("load", reqListener);
 
-/*
-Mipromesa.then(
-  (respuesta) => console.log(respuesta),
-  (razon) => console.log(razon)
-);
-*/
+function enviarDatos() {
+  peticion.open(
+    "POST",
+    "https://bootcamp-dia-3.camilomontoyau.now.sh/usuarios",
+    true
+  );
+  peticion.setRequestHeader(
+    "Content-type",
+    "application/x-www-form-urlencoded"
+  );
+  peticion.send("nombre=LUNES24");
+  setTimeout(refrescar, 3000);
+}
+
+function refrescar() {
+  peticion.open("GET", "https://bootcamp-dia-3.camilomontoyau.now.sh/usuarios");
+  peticion.send();
+}
+
+boton.onclick = enviarDatos;
