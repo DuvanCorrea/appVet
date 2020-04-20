@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
     <head>
         <!-- Required meta tags -->
@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-        <title>Hello, world!</title>
+        <title>app vet</title>
     </head>
 
     <body>
@@ -48,10 +48,13 @@
 
         <div class="container">
 
+            <h1 class="h1 pt-2">Profecionales</h1>
+
             <div class="p-4">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Nueva
+                <button id="btn-nueva-mascota" type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#exampleModal">
+                    Nuevo
                 </button>
 
                 <!-- Modal -->
@@ -60,7 +63,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Nueva mascota</h5>
+                                <h5 class="modal-title" id="modal-titulo">Nuevo Profecional</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -69,28 +72,35 @@
 
                                 <!-- Contenido -->
                                 <form class="form">
+                                    <input type="hidden" id="input-indice">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col">
-                                                <label for="" class="mb-0 mt-3">Nombre</label>
-                                                <input type="text" class="form-control" placeholder="First name">
+                                                <label for="" class="mb-0 mt-3">Identificacion</label>
+                                                <input type="number" name="Identificacion" class="form-control"
+                                                    placeholder="Identificacion" id="identificacion-profecional">
                                             </div>
                                             <div class="col">
-                                                <label for="" class="mb-0 mt-3">Edad</label>
-                                                <input type="text" class="form-control" placeholder="Last name">
+                                                <label for="pais-profecional" class="mb-0 mt-3">Pais</label>
+                                                <select class="form-control" id="pais-profecional">
+                                                    <option>Colombia</option>
+                                                    <option>Mexico</option>
+                                                    <option>Panama</option>
+                                                    <option>Ecuador</option>
+                                                    <option>Otro</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <label for="exampleFormControlSelect2" class="mb-0 mt-3">Tipo de
-                                                    mascota</label>
-                                                <select class="form-control" id="exampleFormControlSelect2">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
+                                                <label for="nombre-profecional" class="mb-0 mt-3">Nombre</label>
+                                                <input type="text" name="nombre-profecional" class="form-control"
+                                                    placeholder="Nombre" id="nombre-profecional">
+                                            </div>
+                                            <div class="col">
+                                                <label for="apellido-profecional" class="mb-0 mt-3">Apellido</label>
+                                                <input type="text" name="apellido-profecional" class="form-control"
+                                                    placeholder="Apellido" id="apellido-profecional">
                                             </div>
                                         </div>
                                     </div>
@@ -100,7 +110,8 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                <button type="button" class="btn btn-primary">Guardar</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                    id="btn-agregar"></button>
                             </div>
                         </div>
                     </div>
@@ -113,31 +124,15 @@
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">first</th>
-                            <th scope="col">secund</th>
-                            <th scope="col">thrirth</th>
+                            <th scope="col">Identificacion</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Pais</th>
                             <th scope="col">Opciones</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>a</td>
-                            <td>b</td>
-                            <td>c</td>
-                            <td>
-                                <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                                    <button type="button" class="btn btn-success">Editar</button>
-                                    <button type="button" class="btn btn-danger">Eliminar</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>d</td>
-                            <td>e</td>
-                            <td>f</td>
-                        </tr>
+                    <tbody id="tbody-mascotas">
+
                     </tbody>
                 </table>
             </div>
@@ -180,6 +175,13 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
+
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/59d9627008.js" crossorigin="anonymous"></script>
+
+        <!-- JS -->
+        <script src="js/profecionales.js"></script>
+
     </body>
 
 </html>
