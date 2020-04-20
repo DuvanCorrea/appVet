@@ -48,6 +48,8 @@
 
         <div class="container">
 
+            <h1 class="h1 pt-2">Mascotas</h1>
+
             <div class="p-4">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -73,23 +75,29 @@
                                         <div class="row">
                                             <div class="col">
                                                 <label for="" class="mb-0 mt-3">Nombre</label>
-                                                <input type="text" class="form-control" placeholder="First name">
+                                                <input type="text" name="nombre" class="form-control"
+                                                    placeholder="Nombre" id="nombre-mascota">
                                             </div>
                                             <div class="col">
-                                                <label for="" class="mb-0 mt-3">Edad</label>
-                                                <input type="text" class="form-control" placeholder="Last name">
+                                                <label for="nombre-propietario" class="mb-0 mt-3">Tipo de
+                                                    mascota</label>
+                                                <select class="form-control" id="nombre-propietario">
+                                                    <option>Propietario</option>
+                                                    <option>Fer</option>
+                                                    <option>Duvan</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <label for="exampleFormControlSelect2" class="mb-0 mt-3">Tipo de
+                                                <label for="tipo-mascota" class="mb-0 mt-3">Tipo de
                                                     mascota</label>
-                                                <select class="form-control" id="exampleFormControlSelect2">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
+                                                <select class="form-control" id="tipo-mascota">
+                                                    <option>Perro</option>
+                                                    <option>Gato</option>
+                                                    <option>Pájaro</option>
+                                                    <option>Conejo</option>
+                                                    <option>Otro</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -100,7 +108,8 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                <button type="button" class="btn btn-primary">Guardar</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                    id="btn-agregar">Guardar</button>
                             </div>
                         </div>
                     </div>
@@ -113,13 +122,13 @@
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">first</th>
-                            <th scope="col">secund</th>
-                            <th scope="col">thrirth</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Propietario</th>
                             <th scope="col">Opciones</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbody-mascotas">
                         <tr>
                             <th scope="row">1</th>
                             <td>a</td>
@@ -127,16 +136,12 @@
                             <td>c</td>
                             <td>
                                 <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                                    <button type="button" class="btn btn-success">Editar</button>
-                                    <button type="button" class="btn btn-danger">Eliminar</button>
+                                    <button type="button" class="btn btn-success"><i class="far fa-edit"></i>
+                                        Editar</button>
+                                    <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i>
+                                        Eliminar</button>
                                 </div>
                             </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>d</td>
-                            <td>e</td>
-                            <td>f</td>
                         </tr>
                     </tbody>
                 </table>
@@ -180,6 +185,13 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
+
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/59d9627008.js" crossorigin="anonymous"></script>
+
+        <!-- JS -->
+        <script src="js/pets.js"></script>
+
     </body>
 
 </html>
