@@ -52,7 +52,8 @@
 
             <div class="p-4">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <button id="btn-nueva-mascota" type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#exampleModal">
                     Nueva
                 </button>
 
@@ -62,7 +63,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Nueva mascota</h5>
+                                <h5 class="modal-title" id="modal-titulo">Nueva mascota</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -71,6 +72,7 @@
 
                                 <!-- Contenido -->
                                 <form class="form">
+                                    <input type="hidden" id="input-indice">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col">
@@ -109,7 +111,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                 <button type="button" class="btn btn-primary" data-dismiss="modal"
-                                    id="btn-agregar">Guardar</button>
+                                    id="btn-agregar">Crear</button>
                             </div>
                         </div>
                     </div>
