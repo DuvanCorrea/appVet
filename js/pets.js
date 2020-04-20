@@ -23,6 +23,7 @@ let mascotas = [
   },
 ];
 
+//Listar mascotas
 function listarMascotas() {
   let html = mascotas
     .map((mascota, i) => {
@@ -33,9 +34,11 @@ function listarMascotas() {
                             <td>${mascota.propietario}</td>
                             <td>
                                 <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                                    <button type="button" class="btn btn-success"><i class="far fa-edit"></i>
+                                    <button type="button" class="btn btn-success btn-editar">
+                                        <i class="far fa-edit" ></i>
                                         Editar</button>
-                                    <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i>
+                                    <button type="button" class="btn btn-danger btn-eliminar" data-indice=${i}>
+                                        <i class="far fa-trash-alt" data-indice=${i}></i>
                                         Eliminar</button>
                                 </div>
                             </td>
@@ -43,9 +46,15 @@ function listarMascotas() {
     })
     .join("");
   listaTabla.innerHTML = html;
+
+  //agrega evento de eliminar a los botones eliminar
+  Array.from(document.getElementsByClassName("btn-eliminar")).forEach((btn) => {
+    btn.onclick = eliminarMascota;
+  });
 }
 listarMascotas();
 
+//Agregar mascota
 function agregarMascota() {
   let mascota = {
     nombre: inputNombreMascota.value,
@@ -56,3 +65,15 @@ function agregarMascota() {
   listarMascotas();
 }
 btnAgregar.onclick = agregarMascota;
+
+//Eliminar mascota
+function eliminarMascota(e) {
+  let i_nuevo = e.target.dataset.indice;
+  let nuevasMascotas = mascotas.filter((mascota, i) => {
+    if (i != i_nuevo) {
+      return mascota;
+    }
+  });
+  mascotas = nuevasMascotas;
+  listarMascotas();
+}
