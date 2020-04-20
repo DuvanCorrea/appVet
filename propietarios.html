@@ -48,13 +48,13 @@
 
         <div class="container">
 
-            <h1 class="h1 pt-2">Mascotas</h1>
+            <h1 class="h1 pt-2">Propietarios de mascotas</h1>
 
             <div class="p-4">
                 <!-- Button trigger modal -->
                 <button id="btn-nueva-mascota" type="button" class="btn btn-primary" data-toggle="modal"
                     data-target="#exampleModal">
-                    Nueva
+                    Nuevo
                 </button>
 
                 <!-- Modal -->
@@ -63,7 +63,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="modal-titulo">Nueva mascota</h5>
+                                <h5 class="modal-title" id="modal-titulo">Nuevo Profecional</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -76,31 +76,31 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col">
-                                                <label for="" class="mb-0 mt-3">Nombre</label>
-                                                <input type="text" name="nombre" class="form-control"
-                                                    placeholder="Nombre" id="nombre-mascota">
+                                                <label for="" class="mb-0 mt-3">Identificacion</label>
+                                                <input type="number" name="Identificacion" class="form-control"
+                                                    placeholder="Identificacion" id="identificacion-propietario">
                                             </div>
                                             <div class="col">
-                                                <label for="nombre-propietario" class="mb-0 mt-3">Tipo de
-                                                    mascota</label>
-                                                <select class="form-control" id="nombre-propietario">
-                                                    <option>Propietario</option>
-                                                    <option>Fer</option>
-                                                    <option>Duvan</option>
+                                                <label for="pais-propietario" class="mb-0 mt-3">Pais</label>
+                                                <select class="form-control" id="pais-propietario">
+                                                    <option>Colombia</option>
+                                                    <option>Mexico</option>
+                                                    <option>Panama</option>
+                                                    <option>Ecuador</option>
+                                                    <option>Otro</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <label for="tipo-mascota" class="mb-0 mt-3">Tipo de
-                                                    mascota</label>
-                                                <select class="form-control" id="tipo-mascota">
-                                                    <option>Perro</option>
-                                                    <option>Gato</option>
-                                                    <option>Pájaro</option>
-                                                    <option>Conejo</option>
-                                                    <option>Otro</option>
-                                                </select>
+                                                <label for="nombre-propietario" class="mb-0 mt-3">Nombre</label>
+                                                <input type="text" name="nombre-propietario" class="form-control"
+                                                    placeholder="Nombre" id="nombre-propietario">
+                                            </div>
+                                            <div class="col">
+                                                <label for="apellido-propietario" class="mb-0 mt-3">Apellido</label>
+                                                <input type="text" name="apellido-propietario" class="form-control"
+                                                    placeholder="Apellido" id="apellido-propietario">
                                             </div>
                                         </div>
                                     </div>
@@ -111,7 +111,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                 <button type="button" class="btn btn-primary" data-dismiss="modal"
-                                    id="btn-agregar">Crear</button>
+                                    id="btn-agregar"></button>
                             </div>
                         </div>
                     </div>
@@ -124,9 +124,10 @@
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">Identificacion</th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Tipo</th>
-                            <th scope="col">Propietario</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Pais</th>
                             <th scope="col">Opciones</th>
                         </tr>
                     </thead>
@@ -179,7 +180,7 @@
         <script src="https://kit.fontawesome.com/59d9627008.js" crossorigin="anonymous"></script>
 
         <!-- JS -->
-        <script src="js/pets.js"></script>
+        <script src="js/propietarios.js"></script>
 
     </body>
 
