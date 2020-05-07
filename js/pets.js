@@ -6,24 +6,18 @@ let inputPropietario = document.getElementById("nombre-propietario");
 let inputIndice = document.getElementById("input-indice");
 let btnAgregarNuevo = document.getElementById("btn-nueva-mascota");
 //console.log(listaTabla);
+let mascotas;
+let uri = "http://localhost:3000/mascotas"
 
-let mascotas = [
-  {
-    nombre: "Firulaius",
-    tipo: "Perro",
-    propietario: "Duvan",
-  },
-  {
-    nombre: "Iris",
-    tipo: "Conejo",
-    propietario: "Fer",
-  },
-  {
-    nombre: "Zeus",
-    tipo: "Conejo",
-    propietario: "Fer",
-  },
-];
+// obtiene mascotas del servidor y las lista 
+async function traerMascotas() {
+  mascotas = await fetch(uri)
+    .then(res => res.json()).then(r => {
+      mascotas = r;
+      listarMascotas();
+    })
+}
+traerMascotas()
 
 //Listar mascotas
 function listarMascotas() {
@@ -58,7 +52,6 @@ function listarMascotas() {
     btn.onclick = editarMascota;
   });
 }
-listarMascotas();
 
 //Agregar mascota
 function enviarMascota() {
